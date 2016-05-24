@@ -1,7 +1,7 @@
 import requests
 from .country import Country
 
-BASE_API_URL = 'https://restcountries.eu/rest/v1/'
+BASE_API_URL = 'https://restcountries.eu/rest/v1'
 
 
 def get_response(query_string):
@@ -30,7 +30,7 @@ def get_by_name(country_name):
 
 	# TODO: may be return as a list
 
-	countries_list = get_response("name/"+country_name)
+	countries_list = get_response("/name/"+country_name)
 
 	# TODO use list comprehension, or just return Country(counries_list[0])
 	# since no two countries have the same name
