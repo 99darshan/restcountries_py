@@ -9,13 +9,15 @@ from restcountry import restcountry as rc
 
 class TestRestcountry(unittest.TestCase):
 
+	# TODO test get_response
+
 	def test_get_by_name(self):
 
 		# expect Country object with name attribute Nepal
 		self.assertEqual("Nepal", rc.get_by_name("Nepal").name, "The name attribute for Country object should be Nepal")
 
 		# expect Country object with capital attribute Ottawa
-		self.assertEqual("Ottawa", rc.get_by_name("Canada").capital, "The capital attribute for Country object should be Ottawa")
+		self.assertEqual("Ottawa", rc.get_by_name("Canada").capital, "capital attribute for Country object should be Ottawa")
 
 	def test_get_by_region(self):
 
@@ -41,6 +43,7 @@ class TestRestcountry(unittest.TestCase):
 
 		# expect Country Poland to not be in region Asia
 		self.assertFalse(is_poland_in_asia)
+
 
 if __name__ == '__main__':
 	unittest.main()
