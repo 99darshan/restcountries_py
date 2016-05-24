@@ -1,5 +1,4 @@
 import requests
-import json
 
 BASE_API_URL = 'https://restcountries.eu/rest/v1/'
 
