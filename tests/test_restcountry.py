@@ -11,6 +11,7 @@ class TestRestcountry(unittest.TestCase):
 
 	# TODO test get_response
 
+
 	def test_get_by_name(self):
 
 		# expect Country object with name attribute Nepal
@@ -48,4 +49,4 @@ class TestRestcountry(unittest.TestCase):
 if __name__ == '__main__':
 	unittest.main()
 
-	
+

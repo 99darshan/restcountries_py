@@ -24,18 +24,16 @@ def get_response(query_string):
 
 def get_by_name(country_name):
 	"""
+	Implements Country Name Substring feature of restcountries API
+
 	:param country_name: name of the country to look for
-	:return: a country object, since only one country have same name
+	:return: a list of Country objects
 	"""
-
-	# TODO: may be return as a list
-
+	
 	countries_list = get_response("/name/"+country_name)
-
-	# TODO use list comprehension, or just return Country(counries_list[0])
-	# since no two countries have the same name
-
-	return Country(countries_list[0])
+	countries_with_query_name = []
+	[countries_with_query_name.append(Country(a_country)) for a_country in countries_list]
+	return countries_with_query_name
 
 
 def get_by_region(region_name):
@@ -45,7 +43,6 @@ def get_by_region(region_name):
 	:return: list of country objects
 	"""
 	countries_list = get_response("/region/"+region_name)
-
 	countries_in_region = []
 	[countries_in_region.append(Country(a_country)) for a_country in countries_list]
 	return countries_in_region
