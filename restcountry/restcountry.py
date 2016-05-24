@@ -15,7 +15,6 @@ def get_response(query_string):
 	response = requests.get(BASE_API_URL+query_string)
 
 	if response.status_code == requests.codes.ok:
-		response.encoding('utf-8')
 		countries_list = response.json()
 		return countries_list
 
@@ -31,15 +30,12 @@ def get_by_name(country_name):
 
 	# TODO: may be return as a list
 
-	countries_list = get_response("/name/"+country_name)
+	countries_list = get_response("name/"+country_name)
 
 	# TODO use list comprehension, or just return Country(counries_list[0])
 	# since no two countries have the same name
 
-	for i in range(len(countries_list)):
-		country = Country(countries_list[i])
-
-	return country
+	return Country(countries_list[0])
 
 
 def get_by_region(region_name):
