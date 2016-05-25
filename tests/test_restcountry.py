@@ -4,8 +4,8 @@ This test suite test functions defined in restcountry module
 
 import unittest
 import requests
-from restcountry import restcountry as rc
-from restcountry import country
+from restcountries import restcountry as rc
+from restcountries import country
 
 
 class TestRestcountry(unittest.TestCase):
