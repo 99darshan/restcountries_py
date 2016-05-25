@@ -10,7 +10,7 @@ def get_response(query_string):
 	This function makes a request to the API, gets the response, decodes the json
 	as python list.
 	:param query_string:
-	:return: list of dictionaries. Each dictioanry contains all info about a country
+	:return: list of dictionaries. Each dictionary contains all info about a country
 	"""
 	response = requests.get(BASE_API_URL+query_string)
 
@@ -22,6 +22,17 @@ def get_response(query_string):
 		return response.raise_for_status()
 
 
+def get_country_objects(info_about_countries):
+
+	"""
+	:param info_about_countries: list of dictionaries. Each dictionary contains all info about a country
+	:return: list of Country objects
+	"""
+	countries = []
+	[countries.append(Country(a_country)) for a_country in info_about_countries]
+	return countries
+
+
 def find_by_name(country_name):
 	"""
 	find all countries having name as query substring
@@ -31,9 +42,7 @@ def find_by_name(country_name):
 	"""
 
 	countries_info = get_response("/name/"+country_name)
-	countries_having_queried_name = []
-	[countries_having_queried_name.append(Country(a_country)) for a_country in countries_info]
-	return countries_having_queried_name
+	return get_country_objects(countries_info)
 
 
 def find_by_capital(capital_name):
@@ -44,9 +53,7 @@ def find_by_capital(capital_name):
 	"""
 
 	countries_info = get_response("/capital/"+capital_name)
-	countries_having_queried_capital = []
-	[countries_having_queried_capital.append(Country(a_country)) for a_country in countries_info]
-	return countries_having_queried_capital
+	return get_country_objects(countries_info)
 
 
 def find_by_region(region_name):
@@ -59,9 +66,7 @@ def find_by_region(region_name):
 	"""
 
 	countries_info = get_response("/region/"+region_name)
-	countries_in_region = []
-	[countries_in_region.append(Country(a_country)) for a_country in countries_info]
-	return countries_in_region
+	return get_country_objects(countries_info)
 
 
 def find_by_callingcode(code_num):
@@ -73,9 +78,7 @@ def find_by_callingcode(code_num):
 	:return: list of country objects
 	"""
 	countries_info = get_response("/callingcode/"+code_num)
-	countries_with_callingcode = []
-	[countries_with_callingcode.append(Country(a_country)) for a_country in countries_info]
-	return countries_with_callingcode
+	return get_country_objects(countries_info)
 
 
 def find_by_currency(currency):
@@ -88,9 +91,7 @@ def find_by_currency(currency):
 	"""
 
 	countries_info = get_response("/currency/"+currency)
-	countries_using_currency = []
-	[countries_using_currency.append(Country(a_country)) for a_country in countries_info]
-	return countries_using_currency
+	return get_country_objects(countries_info)
 
 
 def find_by_countrycodes(code_list):
@@ -107,9 +108,7 @@ def find_by_countrycodes(code_list):
 		query += code+";"
 
 	countries_info = get_response(query)
-	countries_with_codes = []
-	[countries_with_codes.append(Country(a_country)) for a_country in countries_info]
-	return countries_with_codes
+	return get_country_objects(countries_info)
 
 
 def find_by_lang(language):
@@ -122,7 +121,38 @@ def find_by_lang(language):
 	"""
 
 	countries_info = get_response("/lang/"+language)
-	countries_speaking_lang = []
-	[countries_speaking_lang.append(Country(a_country)) for a_country in countries_info]
-	return countries_speaking_lang
+	return get_country_objects(countries_info)
+
+
+def find_by_subregion(sub_region):
+
+	"""
+	find all countries in queried sub_region
+	:param sub_region: String
+	:return: list of Country objects
+	"""
+
+	countries_info = get_response("/subregion/"+sub_region)
+	return get_country_objects(countries_info)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

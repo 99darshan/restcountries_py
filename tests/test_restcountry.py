@@ -149,6 +149,28 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(does_not_speak_en, "Nepalese do not speak English")
 
 
+	def test_find_by_subregion(self):
+
+		countries_in_southern_asia = rc.find_by_subregion("southern asia")
+
+		is_in_southern_asia = False
+		is_not_in_southern_asia = False
+
+		for a_country in countries_in_southern_asia:
+			self.assertTrue("Asia" in a_country.region, "Every country in sub region southern asia is in region Asia")
+			self.assertTrue(hasattr(a_country,"languages"), "Country object has attribute languages")
+
+			if a_country.name == "Pakistan":
+				is_in_southern_asia = True
+
+			if a_country.name == "Belgium":
+				is_not_in_southern_asia = True
+
+		self.assertTrue(is_in_southern_asia, "Pakistan is in Southern Asia")
+		self.assertFalse(is_not_in_southern_asia, "Belgium is not in Southern Asia")
+
+
+
 if __name__ == '__main__':
 	unittest.main()
 
