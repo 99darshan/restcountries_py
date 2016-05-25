@@ -83,7 +83,7 @@ class TestRestcountry(unittest.TestCase):
 
 		for a_country in countries_with_callingcode_1:
 			self.assertTrue(hasattr(a_country, "topLevelDomain"),"Country should have topLevelDomain attribute")
-			self.assertTrue(1 in a_country.callingCodes, "All Counties should have callingCodes 1")
+			self.assertTrue("1" in a_country.callingCodes, "All Country objects should have callingCodes 1")
 
 			if a_country.name == "Canada":
 				has_callingcode_1 = True

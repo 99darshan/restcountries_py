@@ -38,7 +38,7 @@ def find_by_name(country_name):
 
 def find_by_capital(capital_name):
 	"""
-	Get all countries whose Capital contains the queried substring
+	find all countries whose Capital contains the queried substring
 	:param capital_name:
 	:return: a list of Country objects
 	"""
@@ -52,11 +52,12 @@ def find_by_capital(capital_name):
 def find_by_region(region_name):
 
 	"""
-	get all countries in a region (asia, africa, americas, oceania, europe)
+	find all countries in a region (asia, africa, americas, oceania, europe)
 
 	:param region_name:
 	:return: list of country objects
 	"""
+
 	countries_list = get_response("/region/"+region_name)
 	countries_in_region = []
 	[countries_in_region.append(Country(a_country)) for a_country in countries_list]
@@ -66,8 +67,12 @@ def find_by_region(region_name):
 def find_by_callingcode(code_num):
 
 	"""
+	find all countries having the queried number as calling code
 
 	:param code_num:
 	:return: list of country objects
 	"""
-	pass
+	countries_list = get_response("/callingcode/"+code_num)
+	countries_with_callingcode = []
+	[countries_with_callingcode.append(Country(a_country)) for a_country in countries_list]
+	return countries_with_callingcode
