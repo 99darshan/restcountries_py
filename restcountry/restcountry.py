@@ -76,3 +76,19 @@ def find_by_callingcode(code_num):
 	countries_with_callingcode = []
 	[countries_with_callingcode.append(Country(a_country)) for a_country in countries_list]
 	return countries_with_callingcode
+
+
+def find_by_currency(currency):
+
+	"""
+	find all countries using the queried currency
+
+	:param currency:
+	:return: list of country objects
+	"""
+
+	countries_list = get_response("/currency/"+currency)
+	countries_using_currency = []
+	[countries_using_currency.append(Country(a_country)) for a_country in countries_list]
+	return countries_using_currency
+

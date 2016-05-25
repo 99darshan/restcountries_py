@@ -89,11 +89,11 @@ class TestRestcountry(unittest.TestCase):
 				does_not_have_callingcode_1 = True
 
 		self.assertTrue(has_callingcode_1, "Canada should be one of the country with calling code 1")
-		self.assertTrue(does_not_have_callingcode_1, "Country with capital kathmandu does not have calling code 1")
+		self.assertFalse(does_not_have_callingcode_1, "Country with capital kathmandu does not have calling code 1")
 
 	def test_find_by_currency(self):
 
-		countries_using_usd = rc.find_by_callingcode("usd")
+		countries_using_usd = rc.find_by_currency("usd")
 
 		has_usd_as_currency = False
 		does_not_has_usd_as_currency = False
