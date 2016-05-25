@@ -33,6 +33,16 @@ def get_country_objects(info_about_countries):
 	return countries
 
 
+def find_all():
+
+	"""
+	:return: list of Country objects
+	"""
+
+	countries_info = get_response("/all/")
+	return get_country_objects(countries_info)
+
+
 def find_by_name(country_name):
 	"""
 	find all countries having name as query substring

@@ -10,6 +10,13 @@ from restcountry import restcountry as rc
 class TestRestcountry(unittest.TestCase):
 
 	# TODO test get_response
+	def test_find_all(self):
+
+		all_countries = rc.find_all()
+		for a_country in all_countries:
+			self.assertTrue(hasattr(a_country,"callingCodes"), "Country object has attribute callingCodes")
+			self.assertTrue(hasattr(a_country,"alpha2Code"), "Country object has attribute alpha2Code")
+
 
 	def test_find_by_name(self):
 
