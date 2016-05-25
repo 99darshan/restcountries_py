@@ -75,7 +75,25 @@ class TestRestcountry(unittest.TestCase):
 
 
 	def test_find_by_callingcode(self):
-		pass
+
+		countries_with_callingcode_1 = rc.find_by_callingcode("1")
+
+		has_callingcode_1 = False
+		does_not_have_callingcode_1 = True
+
+		for a_country in countries_with_callingcode_1:
+			self.assertTrue(hasattr(a_country, "topLevelDomain"),"Country should have topLevelDomain attribute")
+			self.assertTrue(1 in a_country.callingCodes, "All Counties should have callingCodes 1")
+
+			if a_country.name == "Canada":
+				has_callingcode_1 = True
+
+			if a_country.capital == "Kathmandu":
+				does_not_have_callingcode_1 = False
+
+		self.assertTrue(has_callingcode_1, "Canada should be one of the country with calling code 1")
+		self.assertTrue(does_not_have_callingcode_1, "Country with capital kathmandu does not have calling code 1")
+
 
 
 
