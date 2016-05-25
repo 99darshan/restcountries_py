@@ -157,6 +157,11 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(does_not_has_usd_as_currency, "Nepal does not use USD")
 
 
+	def test_find_by_countrycode(self):
+
+		for a_country in rc.find_by_countrycode("us"):
+			self.assertEqual("United States", a_country.name, "us is the country code of United States")
+
 	def test_find_by_countrycodes(self):
 
 		query_codes = ["np","co","nzl"]
@@ -212,8 +217,5 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(is_not_in_southern_asia, "Belgium is not in Southern Asia")
 
 
-
 if __name__ == '__main__':
 	unittest.main()
-
-

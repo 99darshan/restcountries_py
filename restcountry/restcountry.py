@@ -113,10 +113,22 @@ def find_by_currency(currency):
 	return get_country_objects(countries_info)
 
 
+def find_by_countrycode(code):
+	"""
+	find all countries for the Alpha 2 or Alpha 3 country code
+
+	:param code:
+	:return:
+	"""
+
+	countries_info = get_response(code)
+	return get_country_objects(countries_info)
+
+
 def find_by_countrycodes(code_list):
 
 	"""
-	find all countries for the Alpha 2 or Alpha 3 country codes in the query
+	find all countries for all Alpha 2 or Alpha 3 country codes in the query
 
 	:param code_list: list containing country codes
 	:return: list of Country objects
@@ -153,26 +165,3 @@ def find_by_subregion(sub_region):
 
 	countries_info = get_response("/subregion/"+sub_region)
 	return get_country_objects(countries_info)
-
-def find_by_countrycode(code):
-	pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
