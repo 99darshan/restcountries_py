@@ -11,9 +11,9 @@ class TestRestcountry(unittest.TestCase):
 
 	# TODO test get_response
 
-	def test_get_by_name(self):
+	def test_find_by_name(self):
 
-		countries_having_name_island = rc.get_by_name("island")
+		countries_having_name_island = rc.find_by_name("island")
 
 		has_island_in_country_name = False
 
@@ -34,9 +34,9 @@ class TestRestcountry(unittest.TestCase):
 		self.assertTrue(has_island_in_country_name, "Country with latlng [-8.0,159.0] is Solomon Islands")
 		self.assertTrue(does_not_have_island_in_country_name, "Cairo is capital of Egypt, it doesn't have island in name")
 
-	def test_get_by_capital(self):
+	def test_find_by_capital(self):
 
-		countries_having_ton_in_capital = rc.get_by_capital("ton")
+		countries_having_ton_in_capital = rc.find_by_capital("ton")
 
 		has_ton_in_capital = False
 		does_not_have_ton_in_capital = True
@@ -53,29 +53,29 @@ class TestRestcountry(unittest.TestCase):
 		self.assertTrue(has_ton_in_capital, "Country US has substring ton in its capital")
 		self.assertTrue(does_not_have_ton_in_capital, "Country CN has no substring ton in its capital")
 
-	def test_get_by_region(self):
+	def test_find_by_region(self):
 
-			asian_countries = rc.get_by_region("asia")
+		asian_countries = rc.find_by_region("asia")
 
-			is_china_in_asia = False
-			is_capital_jerusalem_in_asia = False
-			is_poland_in_asia = False
+		is_china_in_asia = False
+		is_capital_jerusalem_in_asia = False
+		is_poland_in_asia = False
 
-			for a_country in asian_countries:
-				if a_country.name == "China":
-					is_china_in_asia = True
-				if a_country.capital == "Jerusalem":
-					is_capital_jerusalem_in_asia = True
-				if a_country.name == "Poland":
-					is_poland_in_asia = True
+		for a_country in asian_countries:
+			if a_country.name == "China":
+				is_china_in_asia = True
+			if a_country.capital == "Jerusalem":
+				is_capital_jerusalem_in_asia = True
+			if a_country.name == "Poland":
+				is_poland_in_asia = True
 
-			self.assertTrue(is_china_in_asia, "China is in region Asia")
-			self.assertTrue(is_capital_jerusalem_in_asia, "Capital city Jerusalem is in region Asia")
-			self.assertFalse(is_poland_in_asia)
-
-
+		self.assertTrue(is_china_in_asia, "China is in region Asia")
+		self.assertTrue(is_capital_jerusalem_in_asia, "Capital city Jerusalem is in region Asia")
+		self.assertFalse(is_poland_in_asia)
 
 
+	def test_find_by_callingcode(self):
+		pass
 
 
 

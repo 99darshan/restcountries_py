@@ -22,9 +22,9 @@ def get_response(query_string):
 		return response.raise_for_status()
 
 
-def get_by_name(country_name):
+def find_by_name(country_name):
 	"""
-	Get all countries having name as query substring
+	find all countries having name as query substring
 
 	:param country_name: name of the country to look for
 	:return: a list of Country objects
@@ -35,7 +35,8 @@ def get_by_name(country_name):
 	[countries_having_queried_name.append(Country(a_country)) for a_country in countries_list]
 	return countries_having_queried_name
 
-def get_by_capital(capital_name):
+
+def find_by_capital(capital_name):
 	"""
 	Get all countries whose Capital contains the queried substring
 	:param capital_name:
@@ -48,10 +49,10 @@ def get_by_capital(capital_name):
 	return countries_having_queried_capital
 
 
-def get_by_region(region_name):
+def find_by_region(region_name):
 
 	"""
-	get all countries in a particular region like Asia, Africa, etc.
+	get all countries in a region (asia, africa, americas, oceania, europe)
 
 	:param region_name:
 	:return: list of country objects
@@ -62,3 +63,11 @@ def get_by_region(region_name):
 	return countries_in_region
 
 
+def find_by_callingcode(code_num):
+
+	"""
+
+	:param code_num:
+	:return: list of country objects
+	"""
+	pass
