@@ -20,46 +20,63 @@ class TestRestcountry(unittest.TestCase):
 		does_not_have_island_in_country_name = True
 
 		for a_country in countries_having_name_island:
+			self.assertTrue("land" in a_country.name or a_country.altSpellings, "name of all Country should have substring land")
+			self.assertTrue(hasattr(a_country, 'callingCodes'), "Country object should have attribute callingCode")
 
-			if(a_country.name == "Falkland Islands"):
-				self.assertEqual("Stanley", a_country.capital, "capital of Falkland Islands is Stanley")
-
-			if(a_country.callingCodes == 64):
-				self.assertEqual("Pitcairn Islands", a_country.name, "64 is calling code of Pitcairn Islands")
-				self.assertNotEqual("Kathmandu", a_country.capital, "Kathmandu is not the capital country with 64 code")
-
-			if(a_country.latlng == [-8.0,159.0]):
+			if a_country.latlng == [-8.0,159.0]:
 				# Country with latlng [-8.0,159.0] is Solomon Islands
 				has_island_in_country_name = True
 
-			if(a_country.capital == "Cairo"):
+			if a_country.capital == "Cairo":
 				# Cairo is capital of Egypt, it doesn't have island in its name
 				does_not_have_island_in_country_name = False
 
 		self.assertTrue(has_island_in_country_name, "Country with latlng [-8.0,159.0] is Solomon Islands")
 		self.assertTrue(does_not_have_island_in_country_name, "Cairo is capital of Egypt, it doesn't have island in name")
 
+	def test_get_by_capital(self):
+
+		countries_having_ton_in_capital = rc.get_by_capital("ton")
+
+		has_ton_in_capital = False
+		does_not_have_ton_in_capital = True
+
+		for a_country in countries_having_ton_in_capital:
+			self.assertTrue("ton" in a_country.capital, "capital attribute of all Country should have substring ton")
+			self.assertTrue(hasattr(a_country, 'timezones'), "Country object should have attribute timezones")
+
+			if a_country.alpha2Code == "US":
+				has_ton_in_capital = True
+			if a_country.alpha2Code == "CN":
+				does_not_have_ton_in_capital = False
+
+		self.assertTrue(has_ton_in_capital, "Country US has substring ton in its capital")
+		self.assertTrue(does_not_have_ton_in_capital, "Country CN has no substring ton in its capital")
+
 	def test_get_by_region(self):
 
-		asian_countries = rc.get_by_region("asia")
+			asian_countries = rc.get_by_region("asia")
 
-		is_china_in_asia = False
-		is_capital_jerusalem_in_asia = False
-		is_poland_in_asia = False
+			is_china_in_asia = False
+			is_capital_jerusalem_in_asia = False
+			is_poland_in_asia = False
 
-		for a_country in asian_countries:
-			if a_country.name == "China":
-				is_china_in_asia = True
-			if a_country.capital == "Jerusalem":
-				is_capital_jerusalem_in_asia = True
-			if a_country.name == "Poland":
-				is_poland_in_asia = True
+			for a_country in asian_countries:
+				if a_country.name == "China":
+					is_china_in_asia = True
+				if a_country.capital == "Jerusalem":
+					is_capital_jerusalem_in_asia = True
+				if a_country.name == "Poland":
+					is_poland_in_asia = True
 
-		self.assertTrue(is_china_in_asia, "China is in region Asia")
+			self.assertTrue(is_china_in_asia, "China is in region Asia")
+			self.assertTrue(is_capital_jerusalem_in_asia, "Capital city Jerusalem is in region Asia")
+			self.assertFalse(is_poland_in_asia)
 
-		self.assertTrue(is_capital_jerusalem_in_asia, "Capital city Jerusalem is in region Asia")
 
-		self.assertFalse(is_poland_in_asia)
+
+
+
 
 
 if __name__ == '__main__':

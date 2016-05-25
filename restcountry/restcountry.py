@@ -35,6 +35,18 @@ def get_by_name(country_name):
 	[countries_having_queried_name.append(Country(a_country)) for a_country in countries_list]
 	return countries_having_queried_name
 
+def get_by_capital(capital_name):
+	"""
+	Get all countries whose Capital contains the queried substring
+	:param capital_name:
+	:return: a list of Country objects
+	"""
+
+	countries_list = get_response("/capital/"+capital_name)
+	countries_having_queried_capital = []
+	[countries_having_queried_capital.append(Country(a_country)) for a_country in countries_list]
+	return countries_having_queried_capital
+
 
 def get_by_region(region_name):
 
