@@ -5,6 +5,7 @@ This test suite test functions defined in restcountry module
 import unittest
 import requests
 from restcountry import restcountry as rc
+from restcountry import country
 
 
 class TestRestcountry(unittest.TestCase):
@@ -14,10 +15,18 @@ class TestRestcountry(unittest.TestCase):
 
 		self.assertIsInstance(rc.get_response("/capital/london"), list, "Return type should be a list")
 
-		response_for_all_countries = rc.get_response("/all/")
-
-		for item in response_for_all_countries:
+		for item in rc.get_response("/all/"):
 			self.assertIsInstance(item, dict, "All items of response list should be a dictionary")
+
+
+	def test_get_country_objects(self):
+
+		countries_info = rc.get_response("/all/")
+
+		self.assertIsInstance(rc.get_country_objects(countries_info), list, "Return type of get_country_objects is list")
+
+		for item in rc.get_country_objects(countries_info):
+			self.assertIsInstance(item, country.Country, "Each item of returned list should be Country objects")
 
 
 	def test_find_all(self):
