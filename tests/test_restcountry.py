@@ -112,6 +112,19 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(does_not_has_usd_as_currency, "Nepal does not use USD")
 
 
+	def test_find_by_countrycodes(self):
+
+		query_codes = ["np","co","nzl"]
+		countries_with_countrycodes = rc.find_by_countrycodes(query_codes)
+
+		for a_country in countries_with_countrycodes:
+			self.assertTrue(a_country.alpha2Code or a_country.alpha3Code in query_codes,
+													" one of np, co, nzl should be	 in alpha 2,3 of Country")
+
+			self.assertTrue(hasattr(a_country,"callingCodes"), "Country object has callingCodes attribute")
+
+
+
 
 if __name__ == '__main__':
 	unittest.main()
