@@ -135,7 +135,8 @@ def find_by_subregion(sub_region):
 	countries_info = get_response("/subregion/"+sub_region)
 	return get_country_objects(countries_info)
 
-
+def find_by_countrycode(code):
+	pass
 
 
 
