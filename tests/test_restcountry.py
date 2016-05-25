@@ -16,30 +16,27 @@ class TestRestcountry(unittest.TestCase):
 		countries_having_name_island = rc.find_by_name("island")
 
 		has_island_in_country_name = False
-
-		does_not_have_island_in_country_name = True
+		does_not_have_island_in_country_name = False
 
 		for a_country in countries_having_name_island:
 			self.assertTrue("land" in a_country.name or a_country.altSpellings, "name of all Country should have substring land")
 			self.assertTrue(hasattr(a_country, 'callingCodes'), "Country object should have attribute callingCode")
 
 			if a_country.latlng == [-8.0,159.0]:
-				# Country with latlng [-8.0,159.0] is Solomon Islands
 				has_island_in_country_name = True
 
 			if a_country.capital == "Cairo":
-				# Cairo is capital of Egypt, it doesn't have island in its name
-				does_not_have_island_in_country_name = False
+				does_not_have_island_in_country_name = True
 
 		self.assertTrue(has_island_in_country_name, "Country with latlng [-8.0,159.0] is Solomon Islands")
-		self.assertTrue(does_not_have_island_in_country_name, "Cairo is capital of Egypt, it doesn't have island in name")
+		self.assertFalse(does_not_have_island_in_country_name, "Cairo is capital of Egypt, it doesn't have island in name")
 
 	def test_find_by_capital(self):
 
 		countries_having_ton_in_capital = rc.find_by_capital("ton")
 
 		has_ton_in_capital = False
-		does_not_have_ton_in_capital = True
+		does_not_have_ton_in_capital = False
 
 		for a_country in countries_having_ton_in_capital:
 			self.assertTrue("ton" in a_country.capital, "capital attribute of all Country should have substring ton")
@@ -48,10 +45,10 @@ class TestRestcountry(unittest.TestCase):
 			if a_country.alpha2Code == "US":
 				has_ton_in_capital = True
 			if a_country.alpha2Code == "CN":
-				does_not_have_ton_in_capital = False
+				does_not_have_ton_in_capital = True
 
 		self.assertTrue(has_ton_in_capital, "Country US has substring ton in its capital")
-		self.assertTrue(does_not_have_ton_in_capital, "Country CN has no substring ton in its capital")
+		self.assertFalse(does_not_have_ton_in_capital, "Country CN has no substring ton in its capital")
 
 	def test_find_by_region(self):
 
@@ -79,7 +76,7 @@ class TestRestcountry(unittest.TestCase):
 		countries_with_callingcode_1 = rc.find_by_callingcode("1")
 
 		has_callingcode_1 = False
-		does_not_have_callingcode_1 = True
+		does_not_have_callingcode_1 = False
 
 		for a_country in countries_with_callingcode_1:
 			self.assertTrue(hasattr(a_country, "topLevelDomain"),"Country should have topLevelDomain attribute")
@@ -89,11 +86,30 @@ class TestRestcountry(unittest.TestCase):
 				has_callingcode_1 = True
 
 			if a_country.capital == "Kathmandu":
-				does_not_have_callingcode_1 = False
+				does_not_have_callingcode_1 = True
 
 		self.assertTrue(has_callingcode_1, "Canada should be one of the country with calling code 1")
 		self.assertTrue(does_not_have_callingcode_1, "Country with capital kathmandu does not have calling code 1")
 
+	def test_find_by_currency(self):
+
+		countries_using_usd = rc.find_by_callingcode("usd")
+
+		has_usd_as_currency = False
+		does_not_has_usd_as_currency = False
+
+		for a_country in countries_using_usd:
+			self.assertTrue("USD" in a_country.currencies, "all countries should have USD in currencies")
+			self.assertTrue(hasattr(a_country, "topLevelDomain"), "Country should have topLevelDomain attribute")
+
+			if a_country.name == "Guam":
+				has_usd_as_currency = True
+
+			if a_country.name == "Nepal":
+				does_not_has_usd_as_currency = True
+
+		self.assertTrue(has_usd_as_currency,"Guam uses USD")
+		self.assertFalse(does_not_has_usd_as_currency, "Nepal does not use USD")
 
 
 
