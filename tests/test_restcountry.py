@@ -9,7 +9,17 @@ from restcountry import restcountry as rc
 
 class TestRestcountry(unittest.TestCase):
 
-	# TODO test get_response
+
+	def test_get_response(self):
+
+		self.assertIsInstance(rc.get_response("/capital/london"), list, "Return type should be a list")
+
+		response_for_all_countries = rc.get_response("/all/")
+
+		for item in response_for_all_countries:
+			self.assertIsInstance(item, dict, "All items of response list should be a dictionary")
+
+
 	def test_find_all(self):
 
 		all_countries = rc.find_all()
@@ -48,8 +58,10 @@ class TestRestcountry(unittest.TestCase):
 
 			self.assertTrue("Solomon Islands" not in con.name, "Solomon Islands does not have name Cayman Islands")
 
-		with self.assertRaises(requests.HTTPError, "Expect 404 HTTPError for country name Islands with fullText True"):
+		# Test that find_by_name raises HTTPError when finding country with name Islands and fullText=True
+		with self.assertRaises(requests.HTTPError):
 			rc.find_by_name("Islands", fullText=True)
+
 
 
 	def test_find_by_capital(self):
