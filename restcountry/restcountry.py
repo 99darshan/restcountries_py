@@ -92,6 +92,7 @@ def find_by_currency(currency):
 	[countries_using_currency.append(Country(a_country)) for a_country in countries_info]
 	return countries_using_currency
 
+
 def find_by_countrycodes(code_list):
 
 	"""
@@ -109,3 +110,19 @@ def find_by_countrycodes(code_list):
 	countries_with_codes = []
 	[countries_with_codes.append(Country(a_country)) for a_country in countries_info]
 	return countries_with_codes
+
+
+def find_by_lang(language):
+
+	"""
+	find all countries speaking the language queried
+
+	:param language:
+	:return: list of Country objects
+	"""
+
+	countries_info = get_response("/lang/"+language)
+	countries_speaking_lang = []
+	[countries_speaking_lang.append(Country(a_country)) for a_country in countries_info]
+	return countries_speaking_lang
+

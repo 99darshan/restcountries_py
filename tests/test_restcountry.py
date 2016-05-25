@@ -59,6 +59,9 @@ class TestRestcountry(unittest.TestCase):
 		is_poland_in_asia = False
 
 		for a_country in asian_countries:
+			self.assertTrue("Asia" in a_country.region, "All Country should have region attribute equal to asia")
+			self.assertTrue(hasattr(a_country, "languages"))
+
 			if a_country.name == "China":
 				is_china_in_asia = True
 			if a_country.capital == "Jerusalem":
@@ -124,6 +127,26 @@ class TestRestcountry(unittest.TestCase):
 			self.assertTrue(hasattr(a_country,"callingCodes"), "Country object has callingCodes attribute")
 
 
+	def test_find_by_lang(self):
+
+		countries_speaking_en = rc.find_by_lang("en")
+
+		speak_en = False
+		does_not_speak_en = False
+
+		for a_country in countries_speaking_en:
+
+			self.assertTrue("en" in a_country.languages, "Country should have en as one of its languages")
+			self.assertTrue(hasattr(a_country,"alpha2Code"), "Country object has attribute alpha2Code")
+
+			if a_country.alpha3Code == "NZL":
+				speak_en = True
+
+			if a_country.name == "Nepal":
+				does_not_speak_en = False
+
+		self.assertTrue(speak_en, "People in New Zealand speak English")
+		self.assertFalse(does_not_speak_en, "Nepalese do not speak English")
 
 
 if __name__ == '__main__':
