@@ -36,6 +36,8 @@ def get_country_objects(info_about_countries):
 def find_all():
 
 	"""
+	find all countries available
+
 	:return: list of Country objects
 	"""
 
@@ -43,16 +45,23 @@ def find_all():
 	return get_country_objects(countries_info)
 
 
-def find_by_name(country_name):
+def find_by_name(country_name, fullText = False):
 	"""
-	find all countries having name as query substring
+	find all countries having name as query
 
 	:param country_name: name of the country to look for
 	:return: a list of Country objects
 	"""
 
-	countries_info = get_response("/name/"+country_name)
-	return get_country_objects(countries_info)
+	# if fullText is True, get country whose name matches query string
+	if fullText:
+		countries_info = get_response("/name/"+country_name+"?fullText=true")
+		return get_country_objects(countries_info)
+
+	# return all countries having query as substring in their name
+	else:
+		countries_info = get_response("/name/" + country_name)
+		return get_country_objects(countries_info)
 
 
 def find_by_capital(capital_name):

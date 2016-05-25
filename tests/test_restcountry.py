@@ -3,7 +3,7 @@ This test suite test functions defined in restcountry module
 """
 
 import unittest
-import restcountry as rc
+import requests
 from restcountry import restcountry as rc
 
 
@@ -20,6 +20,7 @@ class TestRestcountry(unittest.TestCase):
 
 	def test_find_by_name(self):
 
+		# Tests  when fullText is default value False
 		countries_having_name_island = rc.find_by_name("island")
 
 		has_island_in_country_name = False
@@ -37,6 +38,19 @@ class TestRestcountry(unittest.TestCase):
 
 		self.assertTrue(has_island_in_country_name, "Country with latlng [-8.0,159.0] is Solomon Islands")
 		self.assertFalse(does_not_have_island_in_country_name, "Cairo is capital of Egypt, it doesn't have island in name")
+
+		# Tests when fullText is True
+		country_fullText = rc.find_by_name("Cayman Islands", fullText=True)
+
+		for con in country_fullText:
+			self.assertEqual("George Town", con.capital, "Country Cayman Islands should have capital George Town")
+			self.assertTrue(".ky" in con.topLevelDomain, ".ky is top level domain of Cayman Islands")
+
+			self.assertTrue("Solomon Islands" not in con.name, "Solomon Islands does not have name Cayman Islands")
+
+		with self.assertRaises(requests.HTTPError, "Expect 404 HTTPError for country name Islands with fullText True"):
+			rc.find_by_name("Islands", fullText=True)
+
 
 	def test_find_by_capital(self):
 
