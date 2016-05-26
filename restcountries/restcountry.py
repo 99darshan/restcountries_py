@@ -45,17 +45,19 @@ def find_all():
 	return get_country_objects(countries_info)
 
 
-def find_by_name(country_name, fullText = False):
+def find_by_name(country_name, full_text = False):
 	"""
 	find all countries having name as query
 
 	:param country_name: name of the country to look for
+	:param full_text: checks whether to find countries name using fullText or Substring
 	:return: a list of Country objects
+
 	"""
 
 	# if fullText is True, get country whose name matches query string
-	if fullText:
-		countries_info = get_response("/name/"+country_name+"?fullText=true")
+	if full_text:
+		countries_info = get_response("/name/" + country_name + "?fullText=true")
 		return get_country_objects(countries_info)
 
 	# return all countries having query as substring in their name
@@ -71,7 +73,7 @@ def find_by_capital(capital_name):
 	:return: a list of Country objects
 	"""
 
-	countries_info = get_response("/capital/"+capital_name)
+	countries_info = get_response("/capital/" + capital_name)
 	return get_country_objects(countries_info)
 
 
@@ -84,7 +86,7 @@ def find_by_region(region_name):
 	:return: list of country objects
 	"""
 
-	countries_info = get_response("/region/"+region_name)
+	countries_info = get_response("/region/" + region_name)
 	return get_country_objects(countries_info)
 
 
@@ -96,7 +98,7 @@ def find_by_callingcode(code_num):
 	:param code_num:
 	:return: list of country objects
 	"""
-	countries_info = get_response("/callingcode/"+code_num)
+	countries_info = get_response("/callingcode/" + code_num)
 	return get_country_objects(countries_info)
 
 
@@ -109,19 +111,7 @@ def find_by_currency(currency):
 	:return: list of country objects
 	"""
 
-	countries_info = get_response("/currency/"+currency)
-	return get_country_objects(countries_info)
-
-
-def find_by_countrycode(code):
-	"""
-	find all countries for the Alpha 2 or Alpha 3 country code
-
-	:param code:
-	:return:
-	"""
-
-	countries_info = get_response(code)
+	countries_info = get_response("/currency/" + currency)
 	return get_country_objects(countries_info)
 
 
@@ -136,7 +126,7 @@ def find_by_countrycodes(code_list):
 
 	query = "/alpha/?codes="
 	for code in code_list:
-		query += code+";"
+		query += code + ";"
 
 	countries_info = get_response(query)
 	return get_country_objects(countries_info)
@@ -151,7 +141,7 @@ def find_by_lang(language):
 	:return: list of Country objects
 	"""
 
-	countries_info = get_response("/lang/"+language)
+	countries_info = get_response("/lang/" + language)
 	return get_country_objects(countries_info)
 
 
@@ -163,5 +153,5 @@ def find_by_subregion(sub_region):
 	:return: list of Country objects
 	"""
 
-	countries_info = get_response("/subregion/"+sub_region)
+	countries_info = get_response("/subregion/" + sub_region)
 	return get_country_objects(countries_info)
