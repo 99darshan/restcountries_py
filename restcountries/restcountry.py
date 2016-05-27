@@ -12,7 +12,7 @@ def get_response(query_string):
 	:param query_string:
 	:return: list of dictionaries. Each dictionary contains all info about a country
 	"""
-	response = requests.get(BASE_API_URL+query_string)
+	response = requests.get(BASE_API_URL + query_string)
 
 	if response.status_code == requests.codes.ok:
 		countries_info = response.json()

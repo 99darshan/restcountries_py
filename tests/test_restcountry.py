@@ -1,7 +1,3 @@
-"""
-This test suite test functions defined in restcountry module
-"""
-
 import unittest
 import requests
 from restcountries import restcountry as rc
@@ -10,14 +6,18 @@ from restcountries import country
 
 class TestRestcountry(unittest.TestCase):
 	def test_get_response(self):
-
+		"""
+		tests for get_response method in restcountry module
+		"""
 		self.assertIsInstance(rc.get_response("/capital/london"), list, "Return type should be a list")
 
 		for item in rc.get_response("/all/"):
 			self.assertIsInstance(item, dict, "All items of response list should be a dictionary")
 
 	def test_get_country_objects(self):
-
+		"""
+		tests for get_country_objects method in restcountry module
+		"""
 		countries_info = rc.get_response("/all/")
 
 		self.assertIsInstance(rc.get_country_objects(countries_info), list,
@@ -27,14 +27,18 @@ class TestRestcountry(unittest.TestCase):
 			self.assertIsInstance(item, country.Country, "Each item of returned list should be Country objects")
 
 	def test_find_all(self):
-
+		"""
+		tests for find_all method in restcountry module
+		"""
 		all_countries = rc.find_all()
 		for a_country in all_countries:
 			self.assertTrue(hasattr(a_country, "callingCodes"), "Country object has attribute callingCodes")
 			self.assertTrue(hasattr(a_country, "alpha2Code"), "Country object has attribute alpha2Code")
 
 	def test_find_by_name(self):
-
+		"""
+		tests for find_by_name method in restcountry module
+		"""
 		# Tests  when fullText is default value False
 		countries_having_name_island = rc.find_by_name("island")
 
@@ -42,7 +46,8 @@ class TestRestcountry(unittest.TestCase):
 		does_not_have_island_in_country_name = False
 
 		for a_country in countries_having_name_island:
-			self.assertTrue("land" in a_country.name or a_country.altSpellings, "name of all Country should have substring land")
+			self.assertTrue("land" in a_country.name or a_country.altSpellings,
+							"name of all Country should have substring land")
 			self.assertTrue(hasattr(a_country, 'callingCodes'), "Country object should have attribute callingCode")
 
 			if a_country.latlng == [-8.0, 159.0]:
@@ -52,7 +57,8 @@ class TestRestcountry(unittest.TestCase):
 				does_not_have_island_in_country_name = True
 
 		self.assertTrue(has_island_in_country_name, "Country with latlng [-8.0,159.0] is Solomon Islands")
-		self.assertFalse(does_not_have_island_in_country_name, "Cairo is capital of Egypt, it doesn't have island in name")
+		self.assertFalse(does_not_have_island_in_country_name,
+						 "Cairo is capital of Egypt, it doesn't have island in name")
 
 		# Tests when fullText is True
 		country_full_text = rc.find_by_name("Cayman Islands", full_text=True)
@@ -68,7 +74,9 @@ class TestRestcountry(unittest.TestCase):
 			rc.find_by_name("Islands", full_text=True)
 
 	def test_find_by_capital(self):
-
+		"""
+		tests for find_by_capital method in restcountry module
+		"""
 		countries_having_ton_in_capital = rc.find_by_capital("ton")
 
 		has_ton_in_capital = False
@@ -86,9 +94,10 @@ class TestRestcountry(unittest.TestCase):
 		self.assertTrue(has_ton_in_capital, "Country US has substring ton in its capital")
 		self.assertFalse(does_not_have_ton_in_capital, "Country CN has no substring ton in its capital")
 
-
 	def test_find_by_region(self):
-
+		"""
+		tests for find_by_region method in restcountry module
+		"""
 		asian_countries = rc.find_by_region("asia")
 
 		is_china_in_asia = False
@@ -111,7 +120,9 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(is_poland_in_asia)
 
 	def test_find_by_callingcode(self):
-
+		"""
+		tests for find_by_callingcode method in restcountry module
+		"""
 		countries_with_callingcode_1 = rc.find_by_callingcode("1")
 
 		has_callingcode_1 = False
@@ -131,7 +142,9 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(does_not_have_callingcode_1, "Country with capital kathmandu does not have calling code 1")
 
 	def test_find_by_currency(self):
-
+		"""
+		tests for find_by_currency method in restcountry module
+		"""
 		countries_using_usd = rc.find_by_currency("usd")
 
 		has_usd_as_currency = False
@@ -150,20 +163,23 @@ class TestRestcountry(unittest.TestCase):
 		self.assertTrue(has_usd_as_currency, "Guam uses USD")
 		self.assertFalse(does_not_has_usd_as_currency, "Nepal does not use USD")
 
-
 	def test_find_by_countrycodes(self):
-
+		"""
+		tests for find_by_countrycodes method in restcountry module
+		"""
 		query_codes = ["np", "co", "nzl"]
 		countries_with_countrycodes = rc.find_by_countrycodes(query_codes)
 
 		for a_country in countries_with_countrycodes:
 			self.assertTrue(a_country.alpha2Code or a_country.alpha3Code in query_codes,
-							       " one of np, co, nzl should be	 in alpha 2,3 of Country")
+							" one of np, co, nzl should be	 in alpha 2,3 of Country")
 
 			self.assertTrue(hasattr(a_country, "callingCodes"), "Country object has callingCodes attribute")
 
 	def test_find_by_lang(self):
-
+		"""
+		tests for find_by_lang method in restcountry module
+		"""
 		countries_speaking_en = rc.find_by_lang("en")
 
 		speak_en = False
@@ -184,7 +200,9 @@ class TestRestcountry(unittest.TestCase):
 		self.assertFalse(does_not_speak_en, "Nepalese do not speak English")
 
 	def test_find_by_subregion(self):
-
+		"""
+		tests for find_by_subregion method in restcountry module
+		"""
 		countries_in_southern_asia = rc.find_by_subregion("southern asia")
 
 		is_in_southern_asia = False

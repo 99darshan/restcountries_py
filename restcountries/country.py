@@ -1,12 +1,9 @@
 
 class Country:
-	"""
-
-	"""
 	def __init__(self, a_country):
 
 		"""
-		assigns value to the instance variables
+		assign attributes to a instance of Country
 		:param a_country: dictionary containing all info for a country
 		"""
 		self.name = a_country['name']
