@@ -4,7 +4,7 @@
 # also see http://peterdowns.com/posts/first-time-with-pypi.html
 
 import os
-from setuptools import setup
+from distutils.core import setup
 
 # utility function to read the readme file
 # def read(fname):
@@ -22,7 +22,7 @@ setup(
     description = 'A Python wrapper for Restcountries API provided by restcountries.eu',
     keywords = ['countries', 'rest countries', 'wrapper', 'database', 'api'],
     url = 'https://github.com/99darshan/restcountries-py',
-    download_url = 'https://github.com/99darshan/restcountries/tarball/0.1.1',
+    download_url = 'https://github.com/99darshan/restcountries/tarball/0.1.2',
     packages = ['restcountries'],
     # long_description=read('README.rst'),
     install_requires = ['requests==2.5.3'],
