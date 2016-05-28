@@ -1,7 +1,7 @@
 import unittest
 import requests
-from restcountries import restcountry as rc
-from restcountries import country
+from restcountries_py import restcountry as rc
+from restcountries_py import country
 
 
 class TestRestcountry(unittest.TestCase):
@@ -108,11 +108,11 @@ class TestRestcountry(unittest.TestCase):
 			self.assertTrue("Asia" in a_country.region, "All Country should have region attribute equal to asia")
 			self.assertTrue(hasattr(a_country, "languages"))
 
-			if a_country.name == "China":
+			if a_country.country_name == "China":
 				is_china_in_asia = True
 			if a_country.capital == "Jerusalem":
 				is_capital_jerusalem_in_asia = True
-			if a_country.name == "Poland":
+			if a_country.country_name == "Poland":
 				is_poland_in_asia = True
 
 		self.assertTrue(is_china_in_asia, "China is in region Asia")
@@ -132,7 +132,7 @@ class TestRestcountry(unittest.TestCase):
 			self.assertTrue(hasattr(a_country, "topLevelDomain"), "Country should have topLevelDomain attribute")
 			self.assertTrue("1" in a_country.callingCodes, "All Country objects should have callingCodes 1")
 
-			if a_country.name == "Canada":
+			if a_country.country_name == "Canada":
 				has_callingcode_1 = True
 
 			if a_country.capital == "Kathmandu":
@@ -154,10 +154,10 @@ class TestRestcountry(unittest.TestCase):
 			self.assertTrue("USD" in a_country.currencies, "all countries should have USD in currencies")
 			self.assertTrue(hasattr(a_country, "topLevelDomain"), "Country should have topLevelDomain attribute")
 
-			if a_country.name == "Guam":
+			if a_country.country_name == "Guam":
 				has_usd_as_currency = True
 
-			if a_country.name == "Nepal":
+			if a_country.country_name == "Nepal":
 				does_not_has_usd_as_currency = True
 
 		self.assertTrue(has_usd_as_currency, "Guam uses USD")
@@ -193,7 +193,7 @@ class TestRestcountry(unittest.TestCase):
 			if a_country.alpha3Code == "NZL":
 				speak_en = True
 
-			if a_country.name == "Nepal":
+			if a_country.country_name == "Nepal":
 				does_not_speak_en = False
 
 		self.assertTrue(speak_en, "People in New Zealand speak English")
@@ -212,10 +212,10 @@ class TestRestcountry(unittest.TestCase):
 			self.assertTrue("Asia" in a_country.region, "Every country in sub region southern asia is in region Asia")
 			self.assertTrue(hasattr(a_country, "languages"), "Country object has attribute languages")
 
-			if a_country.name == "Pakistan":
+			if a_country.country_name == "Pakistan":
 				is_in_southern_asia = True
 
-			if a_country.name == "Belgium":
+			if a_country.country_name == "Belgium":
 				is_not_in_southern_asia = True
 
 		self.assertTrue(is_in_southern_asia, "Pakistan is in Southern Asia")
