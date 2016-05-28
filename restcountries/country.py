@@ -6,7 +6,7 @@ class Country:
 		assign attributes to a instance of Country
 		:param a_country: dictionary containing all info for a country
 		"""
-		self.name = a_country['name']
+		self.country_name = a_country['name']
 		self.area = a_country['area']
 		self.latlng = a_country['latlng']
 		self.currencies = a_country['currencies']
@@ -28,6 +28,6 @@ class Country:
 		self.region = a_country['region']
 		self.nativeName = a_country['nativeName']
 
-	def __str__(self):
-		return self.name
+	def __repr__(self):
+		return self.country_name
 
