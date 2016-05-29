@@ -9,27 +9,27 @@ import os
 from setuptools import setup
 
 #utility function to read the readme file
-here = os.path.dirname(os.path.abspath(__file__))
-try:
-	with open(os.path.join(here,'README.md')) as doc:
-		long_desc = doc.read()
-except:
-	long_desc = ''
+# here = os.path.dirname(os.path.abspath(__file__))
+# try:
+# 	with open(os.path.join(here,'README.md')) as doc:
+# 		long_desc = doc.read()
+# except:
+# 	long_desc = ''
 
 # Install requests==2.5.3 to avoid InsecurePlatformWarning message
 
 setup(
 	name='restcountries_py',
-	version='0.1.2',
+	version='0.1.3',
 	author='Darshan Adhikari',
 	author_email='dsn.adh@hotmail.com',
 	description='A Python wrapper for Restcountries API provided by https://restcountries.eu',
 	keywords=['countries', 'rest countries', 'wrapper', 'database', 'api'],
 	url='https://github.com/99darshan/restcountries_py',
-	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1.2',
+	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1.3',
 	packages=['restcountries_py'],
-	long_description=long_desc,
-	install_requires=['requests==2.5.3'],
+	#long_description=long_desc,
+	install_requires=['requests'],
 	classifiers=[
 		"Development Status :: 4 - Beta",
 		"Intended Audience :: Developers",

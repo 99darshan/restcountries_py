@@ -7,7 +7,7 @@ about different countries. To learn more about the restcountries API, check out 
 
 ### Installation
 ***
-*restcountries_py* is available on the Python Package Index(PyPi) at https://pypi.python.org/pypi/restcountries_py/0.1.2
+*restcountries_py* is available on the Python Package Index(PyPi) at https://pypi.python.org/pypi/restcountries_py/0.1.3
 
 You can install *restcountries_py* using one of the following methods:
 
