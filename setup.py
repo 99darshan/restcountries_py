@@ -1,28 +1,34 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 
 # http://pythonhosted.org/an_example_pypi_project/setuptools.html
 # also see http://peterdowns.com/posts/first-time-with-pypi.html
 
 import os
-from distutils.core import setup
+from setuptools import setup
 
-# utility function to read the readme file
-# def read(fname):
-# 	return open(os.path.join(os.path.dirname(__file__), fname)).read()
+#utility function to read the readme file
+here = os.path.dirname(os.path.abspath(__file__))
+try:
+	with open(os.path.join(here,'README.md')) as doc:
+		long_desc = doc.read()
+except:
+	long_desc = ''
 
 # Install requests==2.5.3 to avoid InsecurePlatformWarning message
 
 setup(
 	name='restcountries_py',
-	version='0.1.1',
+	version='0.1.2',
 	author='Darshan Adhikari',
 	author_email='dsn.adh@hotmail.com',
 	description='A Python wrapper for Restcountries API provided by https://restcountries.eu',
 	keywords=['countries', 'rest countries', 'wrapper', 'database', 'api'],
 	url='https://github.com/99darshan/restcountries_py',
-	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1.1',
+	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1.2',
 	packages=['restcountries_py'],
-	#long_description=read('README.md'),
+	long_description=long_desc,
 	install_requires=['requests==2.5.3'],
 	classifiers=[
 		"Development Status :: 4 - Beta",
