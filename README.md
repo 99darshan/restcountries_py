@@ -6,7 +6,7 @@ about different countries. To learn more about the restcountries API, check out 
 
 ### Installation
 ***
-*restcountries_py* is available on the Python Package Index(PyPi) at TODO
+*restcountries_py* is available on the Python Package Index(PyPi) at https://pypi.python.org/pypi/restcountries_py/0.1
 
 You can install *restcountries_py* using one of the following methods:
 
@@ -156,7 +156,7 @@ Let's find countries in northern america sharing borders with USA
 >>> countries_in_northern_america = rc.find_by_subregion("northern america")
 >>> coun_in_northern_america_border_with_usa = []
 >>> [coun_in_northern_america_border_with_usa.append(country) for country in countries_in_northern_america if "USA" in country.borders]
->>> print(coun_in_northern_sharing_border_with_usa)
+>>> print(coun_in_northern_border_with_usa)
 [Canada]
 ```
 
@@ -169,7 +169,7 @@ Let's find the name and calling code of country whose capital is Kathmandu.
 ```python
 >>> coun = rc.find_by_capital("kathmandu")
 >>> print("{} has calling code {}".format(coun[0].country_name, coun[0].callingCodes))
-Nepal has calling code ['977']
+'Nepal has calling code ['977']'
 ```
 
 ### Attributes 
@@ -177,8 +177,9 @@ Nepal has calling code ['977']
 Country objects have following attributes:
 
 ```
-country_name, area, latlng, currencies, subregion, relevance, callingCodes, alpha3Code, timezones, languages,
-population, capital, borders, demonym, topLevelDomain, altSpellings, translations, gini, alpha2Code, region, nativeName
+country_name, area, latlng, currencies, subregion, relevance, callingCodes, alpha3Code, timezones, 
+languages, population, capital, borders, demonym, topLevelDomain, altSpellings, translations, gini,
+alpha2Code, region, nativeName
 ```
 
 ### Credits
