@@ -7,22 +7,22 @@ import os
 from distutils.core import setup
 
 # utility function to read the readme file
-def read(fname):
-	return open(os.path.join(os.path.dirname(__file__), fname)).read()
+# def read(fname):
+# 	return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 # Install requests==2.5.3 to avoid InsecurePlatformWarning message
 
 setup(
 	name='restcountries_py',
-	version='0.1',
+	version='0.1.1',
 	author='Darshan Adhikari',
 	author_email='dsn.adh@hotmail.com',
 	description='A Python wrapper for Restcountries API provided by https://restcountries.eu',
 	keywords=['countries', 'rest countries', 'wrapper', 'database', 'api'],
 	url='https://github.com/99darshan/restcountries_py',
-	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1',
+	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1.1',
 	packages=['restcountries_py'],
-	long_description=read('README.md'),
+	#long_description=read('README.md'),
 	install_requires=['requests==2.5.3'],
 	classifiers=[
 		"Development Status :: 4 - Beta",
