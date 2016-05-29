@@ -17,7 +17,7 @@ setup(
 	version='0.1',
 	author='Darshan Adhikari',
 	author_email='dsn.adh@hotmail.com',
-	description='A Python wrapper for Restcountries API provided by restcountries.eu',
+	description='A Python wrapper for Restcountries API provided by https://restcountries.eu',
 	keywords=['countries', 'rest countries', 'wrapper', 'database', 'api'],
 	url='https://github.com/99darshan/restcountries_py',
 	download_url='https://github.com/99darshan/restcountries_py/tarball/0.1',

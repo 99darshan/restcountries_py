@@ -46,7 +46,7 @@ class TestRestcountry(unittest.TestCase):
 		does_not_have_island_in_country_name = False
 
 		for a_country in countries_having_name_island:
-			self.assertTrue("land" in a_country.name or a_country.altSpellings,
+			self.assertTrue("land" in a_country.country_name or a_country.altSpellings,
 							"name of all Country should have substring land")
 			self.assertTrue(hasattr(a_country, 'callingCodes'), "Country object should have attribute callingCode")
 
@@ -67,7 +67,7 @@ class TestRestcountry(unittest.TestCase):
 			self.assertEqual("George Town", con.capital, "Country Cayman Islands should have capital George Town")
 			self.assertTrue(".ky" in con.topLevelDomain, ".ky is top level domain of Cayman Islands")
 
-			self.assertTrue("Solomon Islands" not in con.name, "Solomon Islands does not have name Cayman Islands")
+			self.assertTrue("Solomon Islands" not in con.country_name, "Solomon Islands does not have name Cayman Islands")
 
 		# Test that find_by_name raises HTTPError when finding country with name Islands and fullText=True
 		with self.assertRaises(requests.HTTPError):
