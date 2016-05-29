@@ -1,6 +1,7 @@
 # restcountries_py
 ***
 This is a Python wrapper library around the API provided by REST Countries v1.1.2
+
 By calling the functions provided by *restcountries_py* you can simplify your code and access vast amount of data
 about different countries. To learn more about the restcountries API, check out their website http://restcountries.eu
 
@@ -26,7 +27,7 @@ If you install it yourself, also install [requests](http://www.python-requests.o
 
 Once you have the *restcountries_py* installed, you could start playing around.
 
-First, import the restcountry module where all the functions for finding countries are defined
+First, import the restcountry module where all the functions for finding countries are defined.
 
 ```python
 >>> import restcountries_py.restcountry as rc
@@ -50,8 +51,9 @@ function return a list of Country objects. Access the instance attributes on the
 
 ##### Find by name
 
-Find countries with the query substring in the country's name or Alternate Name (altSpellings)
-Let's find all countries and their capital which have "island" in their name
+Find countries with the query substring in the country's name or Alternate Name (altSpellings).
+
+Let's find all countries and their capital which have "island" in their name.
 
 ```python
 >>> countries_with_island_in_name = rc.find_by_name("island")
@@ -73,7 +75,7 @@ Finland ------------------------- Helsinki
 ...
 ```
 
-Find country with their name exactly matching the query string
+Find country with their name exactly matching the query string.
 
 ```python
 >>> country_for_name = rc.find_by_name("United States", full_text=True)
@@ -109,7 +111,7 @@ Use [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language 
 
 ##### Find by calling code
 
-Find all countries having +1 calling code
+Find all countries having +1 calling code.
 
 ```python
 >>> country_with_callingcode_1 = rc.find_by_callingcode("1")
@@ -150,7 +152,7 @@ Let's find all countries in region Oceania with population less than 100000
 
 Look for countries in a subregion. Subregion may be Southern Asia, Eastern Europe, South America, Northern America,etc.
 
-Let's find countries in northern america sharing borders with USA
+Let's find countries in northern america sharing borders with USA.
 
 ```python
 >>> countries_in_northern_america = rc.find_by_subregion("northern america")
