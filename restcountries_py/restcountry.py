@@ -1,7 +1,7 @@
 import requests
 from .country import Country
 
-BASE_API_URL = 'https://restcountries.eu/rest/v1'
+BASE_API_URL = 'https://restcountries.eu/rest/v2'
 
 
 def get_response(query_string):
