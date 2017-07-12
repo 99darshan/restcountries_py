@@ -11,7 +11,6 @@ class Country:
 		self.latlng = a_country['latlng']
 		self.currencies = a_country['currencies']
 		self.subregion = a_country['subregion']
-		self.relevance = a_country['relevance']
 		self.callingCodes = a_country['callingCodes']
 		self.alpha3Code = a_country['alpha3Code']
 		self.timezones = a_country['timezones']
@@ -27,6 +26,9 @@ class Country:
 		self.alpha2Code = a_country['alpha2Code']
 		self.region = a_country['region']
 		self.nativeName = a_country['nativeName']
+		self.numericCode = a_country['numericCode']
+		self.regionalBlocs = a_country['regionalBlocs']
+		self.flag = a_country['flag']
 
 	def __repr__(self):
 		return self.country_name
